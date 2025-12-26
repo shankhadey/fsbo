@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FSBO Friend - Get Your Home Priced Right in 24 Hours</title>
+    <meta name="description" content="Stop guessing. Get expert pricing analysis for your Texas FSBO listing using real MLS data. 70% of FSBO sellers price wrong - don't be one of them.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #16a34a;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+            color: white;
+            padding: 40px 0 30px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 16px;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+        
+        .hero .problem {
+            font-size: 14px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 800;
+            display: block;
+            color: #fbbf24;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            opacity: 0.9;
+            margin-top: 3px;
+            line-height: 1.3;
+        }
+        
+        /* Quick Pricing Section */
+        .quick-pricing {
+            background: white;
+            padding: 30px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .quick-pricing h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .quick-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto 15px;
+        }
+        
+        .quick-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .quick-card.featured {
+            background: #eff6ff;
+            border-color: #2563eb;
+            position: relative;
+        }
+        
+        .quick-card:active {
+            transform: scale(0.98);
+        }
+        
+        .quick-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        
+        .quick-price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+        
+        .quick-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 3px;
+        }
+        
+        .quick-price-note {
+            font-size: 11px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+        
+        .quick-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+            text-align: left;
+            flex-grow: 1;
+        }
+        
+        .quick-features li {
+            font-size: 11px;
+            color: #1e293b;
+            padding: 4px 0;
+            line-height: 1.3;
+        }
+        
+        .quick-desc {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .quick-btn {
+            width: 100%;
+            padding: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .quick-guarantee {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 15px;
+        }
+        
+        .pain-points {
+            background: #f8fafc;
+            padding: 30px 0;
+        }
+        
+        .pain-points h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        
+        .pain-card {
+            background: white;
+            border-left: 3px solid #dc2626;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .pain-card h3 {
+            color: #dc2626;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .pain-card p {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+        
+        .solution {
+            background: white;
+            padding: 30px 0;
+        }
+        
+        .solution h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        
+        .solution-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .feature {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            background: #dbeafe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .feature-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #2563eb;
+        }
+        
+        .feature h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #1e293b;
+        }
+        
+        .feature p {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+        
+        .form-section {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+            padding: 40px 0;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .form-container h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #1e293b;
+            text-align: center;
+        }
+        
+        .form-container .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1e40af;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .guarantee {
+            background: #f0fdf4;
+            border: 2px solid #16a34a;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .guarantee h4 {
+            color: #16a34a;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .guarantee p {
+            color: #64748b;
+            font-size: 12px;
+        }
+        
+        .faq {
+            background: white;
+            padding: 30px 0;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8fafc;
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 13px;
+        }
+        
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+        
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-answer.active {
+            padding: 12px 15px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+        
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+        
+        @media (min-width: 769px) {
+            /* Desktop styles */
+            .hero {
+                padding: 60px 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero .subtitle {
+                font-size: 20px;
+            }
+            
+            .hero .problem {
+                font-size: 16px;
+            }
+            
+            .stats {
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                max-width: none;
+            }
+            
+            .stat-number {
+                font-size: 42px;
+            }
+            
+            .stat-label {
+                font-size: 13px;
+            }
+            
+            .quick-pricing {
+                padding: 40px 0;
+            }
+            
+            .quick-pricing h2 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            
+            .quick-cards {
+                max-width: 600px;
+                gap: 20px;
+            }
+            
+            .quick-card {
+                padding: 30px 20px;
+            }
+            
+            .quick-price {
+                font-size: 42px;
+            }
+            
+            .quick-name {
+                font-size: 18px;
+            }
+            
+            .quick-price-note {
+                font-size: 12px;
+            }
+            
+            .quick-features li {
+                font-size: 12px;
+                padding: 5px 0;
+            }
+            
+            .quick-desc {
+                font-size: 14px;
+            }
+            
+            .quick-guarantee {
+                font-size: 13px;
+            }
+            
+            .pain-points {
+                padding: 50px 0;
+            }
+            
+            .pain-points h2 {
+                font-size: 30px;
+                margin-bottom: 30px;
+            }
+            
+            .pain-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .pain-card {
+                padding: 25px;
+            }
+            
+            .pain-card h3 {
+                font-size: 17px;
+            }
+            
+            .pain-card p {
+                font-size: 14px;
+            }
+            
+            .solution {
+                padding: 50px 0;
+                background: #f8fafc;
+            }
+            
+            .solution h2 {
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+            
+            .solution-subtitle {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .feature {
+                padding: 25px;
+            }
+            
+            .feature h3 {
+                font-size: 17px;
+            }
+            
+            .feature p {
+                font-size: 14px;
+            }
+            
+            .form-section {
+                padding: 60px 0;
+            }
+            
+            .form-container {
+                padding: 40px;
+            }
+            
+            .form-container h2 {
+                font-size: 28px;
+            }
+            
+            .form-container .subtitle {
+                font-size: 15px;
+                margin-bottom: 30px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .faq {
+                padding: 50px 0;
+            }
+            
+            .faq h2 {
+                font-size: 30px;
+                margin-bottom: 30px;
+            }
+            
+            .faq-question {
+                padding: 18px 20px;
+                font-size: 15px;
+            }
+            
+            .faq-answer.active {
+                padding: 18px 20px;
+            }
+            
+            .faq-answer p {
+                font-size: 14px;
+            }
+            
+            footer {
+                padding: 35px 0;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">DePaul Realty Group</div>
+                <div class="trust-badge">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    Licensed TX Realtor
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Is Your FSBO Priced Right?<br>Or Leaving $50K on the Table?</h1>
+            <p class="subtitle">Get expert pricing analysis in 24 hours using real MLS data</p>
+            <p class="problem">70% of FSBO sellers price wrong. Overpriced homes sit. Underpriced homes lose thousands.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">$55K</span>
+                    <span class="stat-label">Average FSBO sale price below<br>agent-assisted homes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">64%</span>
+                    <span class="stat-label">Don't achieve their<br>desired sale price</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">Struggle with<br>pricing correctly</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Pricing CTA (Mobile Priority) -->
+    <section class="quick-pricing">
+        <div class="container">
+            <h2>Choose Your Analysis</h2>
+            <div class="quick-cards">
+                <div class="quick-card" onclick="scrollToForm('quick')">
+                    <div class="quick-price">$99</div>
+                    <div class="quick-name">Quick Price Check</div>
+                    <div class="quick-price-note">One-time payment</div>
+                    <ul class="quick-features">
+                        <li>✓ 3-5 comparable sales</li>
+                        <li>✓ Suggested price range</li>
+                        <li>✓ Market velocity analysis</li>
+                        <li>✓ 24-hour delivery</li>
+                    </ul>
+                    <button class="quick-btn">Get Started →</button>
+                </div>
+                <div class="quick-card featured" onclick="scrollToForm('full')">
+                    <div class="quick-badge">MOST POPULAR</div>
+                    <div class="quick-price">$149</div>
+                    <div class="quick-name">Full CMA Report</div>
+                    <div class="quick-price-note">One-time payment</div>
+                    <ul class="quick-features">
+                        <li>✓ Everything in Quick Check</li>
+                        <li>✓ 7-10 comparable sales</li>
+                        <li>✓ Detailed adjustment breakdown</li>
+                        <li>✓ Licensed realtor review</li>
+                        <li>✓ 15-min consultation call</li>
+                        <li>✓ Pricing strategy memo</li>
+                    </ul>
+                    <button class="quick-btn">Get Started →</button>
+                </div>
+            </div>
+            <p class="quick-guarantee">✓ 24-hour delivery · ✓ Licensed realtor · ✓ Money-back guarantee</p>
+        </div>
+    </section>
+
+    <section class="pain-points">
+        <div class="container">
+            <h2>Sound Familiar?</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <h3>❌ Zillow Zestimate is $30K Off</h3>
+                    <p>Online estimates don't know your renovations, neighborhood dynamics, or current buyer demand. They're often wildly inaccurate.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ No Showings After 3 Weeks</h3>
+                    <p>Overpriced by just 5% and buyers scroll past. Your home becomes "stale inventory" and you're forced to drop price anyway.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ Comp Research Takes Hours</h3>
+                    <p>Which sold homes are actually comparable? What about condition differences? Days on market? You're not a professional appraiser.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ Emotional, Not Data-Driven</h3>
+                    <p>"I put $40K into the kitchen" doesn't mean buyers will pay $40K more. Market determines value, not your investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="order">
+        <div class="container">
+            <div class="form-container">
+                <h2>Get Your Analysis Started</h2>
+                <p class="subtitle">Fill out the form and pay securely - receive your report within 24 hours</p>
+                
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="package">Select Package *</label>
+                        <select id="package" name="package" required>
+                            <option value="">Choose a package...</option>
+                            <option value="quick">Quick Price Check - $99</option>
+                            <option value="full">Full CMA Report - $149 (Recommended)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, Austin, TX 78701" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="currentPrice">Current List Price</label>
+                            <input type="text" id="currentPrice" name="currentPrice" placeholder="$425,000">
+                        </div>
+                        <div class="form-group">
+                            <label for="daysListed">Days on Market</label>
+                            <input type="number" id="daysListed" name="daysListed" placeholder="14">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sqft">Square Footage</label>
+                            <input type="text" id="sqft" name="sqft" placeholder="2,400">
+                        </div>
+                        <div class="form-group">
+                            <label for="bedBath">Beds / Baths</label>
+                            <input type="text" id="bedBath" name="bedBath" placeholder="4 / 3">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="upgrades">Recent Upgrades or Special Features</label>
+                        <textarea id="upgrades" name="upgrades" rows="3" placeholder="New kitchen 2023, pool, corner lot, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="submitBtn">
+                        Continue to Secure Payment
+                    </button>
+                    
+                    <div class="guarantee">
+                        <h4>🛡️ 100% Money-Back Guarantee</h4>
+                        <p>If you're not satisfied with the analysis, we'll refund your payment in full. No questions asked.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2>What You Get: Professional CMA Analysis</h2>
+            <p class="solution-subtitle">The same analysis realtors charge $300+ for, delivered in 24 hours</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3>True Comparable Sales</h3>
+                    <p>5-7 recent sales matched by location, size, condition, age - not generic online estimates</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <h3>Price Range Strategy</h3>
+                    <p>Optimal listing price + floor price + ceiling price based on current market velocity</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Days on Market Analysis</h3>
+                    <p>How fast are similar homes selling? Are you priced to move or priced to sit?</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Adjustment Breakdown</h3>
+                    <p>Detailed explanation of how upgrades, lot size, condition affect your home's value</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How is this different from Zillow's Zestimate?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zestimates are automated algorithms that often miss 20-30% of the mark. We use real MLS data, analyze actual comparable sales, and factor in your specific upgrades and condition. Plus, a licensed realtor reviews every Full CMA report.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What happens after I submit the form?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You'll be directed to our secure Stripe payment page. After payment, we immediately start your analysis and deliver via email within 24 hours (usually faster).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is payment secure?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We use Stripe, the same payment processor trusted by Amazon, Google, and millions of businesses. Your card details never touch our servers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What if my home is unique or in a rural area?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We'll find the best comparables available. For rural or unique properties, we expand the search radius and may include pending sales or current listings. If we truly can't provide value, we'll refund you in full.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; DePaul Realty Group. Licensed Texas Realtor. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Serving Texas</p>
+        </div>
+    </footer>
+
+    <script>
+        //
+        const GOOGLE_SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxYf5tn7gReSjxb2i5seA_wBN-mSLjiffJYQTCZRYJczJ-BQu3vGpzrAiag0sBiGoamrg/exec';
+        
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+            
+            answer.classList.toggle('active');
+            icon.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+        
+        // Scroll to form and pre-select package
+        function scrollToForm(packageType) {
+            const packageSelect = document.getElementById('package');
+            packageSelect.value = packageType;
+            packageSelect.dispatchEvent(new Event('change'));
+            
+            document.getElementById('orderForm').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // Form Submission with Google Sheets
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('orderForm');
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.timestamp = new Date().toISOString();
+            
+            // Determine Stripe link
+            const stripeLinks = {
+                'quick': 'https://buy.stripe.com/eVq4gyaqy6KQ9dw9Pk3oA01',
+                'full': 'https://buy.stripe.com/aFacN456e2uAdtM5z43oA02'
+            };
+            
+            const paymentUrl = stripeLinks[data.package];
+            
+            try {
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SHEETS_WEBHOOK, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Redirect to Stripe payment (even if Google Sheets fails, payment is priority)
+                window.location.href = paymentUrl;
+                
+            } catch (error) {
+                // If Google Sheets fails, still redirect to payment
+                console.error('Sheets error:', error);
+                window.location.href = paymentUrl;
+            }
+        });
+    </script>
+</body>
+</html>

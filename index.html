@@ -1019,13 +1019,19 @@
             const data = Object.fromEntries(formData.entries());
             data.timestamp = new Date().toISOString();
             
-            // Determine Stripe link
+            /* Determine Stripe link
             const stripeLinks = {
                 'quick': 'https://buy.stripe.com/eVq4gyaqy6KQ9dw9Pk3oA01',
                 'full': 'https://buy.stripe.com/aFacN456e2uAdtM5z43oA02'
+            }; */
+
+            // Determine Square link
+            const squareLinks = {
+                'quick': 'https://square.link/u/IvoVp7t4',
+                'full': 'https://square.link/u/19KacHeU'
             };
             
-            const paymentUrl = stripeLinks[data.package];
+            const paymentUrl = squareLinks[data.package];
             
             try {
                 // Send to Google Sheets
